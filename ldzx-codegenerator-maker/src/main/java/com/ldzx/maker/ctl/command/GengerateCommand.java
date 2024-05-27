@@ -3,9 +3,11 @@ package com.ldzx.maker.ctl.command;
 import cn.hutool.core.bean.BeanUtil;
 import com.ldzx.maker.model.DataModel;
 import com.ldzx.maker.generator.file.MainFileGenerator;
+import lombok.Data;
 import picocli.CommandLine;
 
 import java.util.concurrent.Callable;
+@Data
 @CommandLine.Command(name = "generate",description = "生成代码" ,mixinStandardHelpOptions = true)
 public class GengerateCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-a","--author"},description = {"作者"},arity = "0..1",interactive = true)

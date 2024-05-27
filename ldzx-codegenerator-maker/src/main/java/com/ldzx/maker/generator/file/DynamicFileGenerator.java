@@ -17,11 +17,13 @@ public class DynamicFileGenerator {
         // new出Configuration对象,参数为FreeMaker版本号
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_32);
         //指定模板文件所在的路径
-        cfg.setDirectoryForTemplateLoading(new File(inputPath));
+        File templateDir = new File(inputPath).getParentFile();
+        cfg.setDirectoryForTemplateLoading(templateDir);
         // Set the preferred charset template files are stored in. UTF-8 is
         cfg.setDefaultEncoding("UTF-8");
         // 创建模板对象,加载指定模板
-        Template template = cfg.getTemplate("DataModel.java.ftl");
+        String templateName = new File(inputPath).getName();
+        Template template = cfg.getTemplate(templateName);
         //文件不存在则创建文件和父目录
         if (!FileUtil.exist(outputPath)){
             FileUtil.touch(outputPath);
