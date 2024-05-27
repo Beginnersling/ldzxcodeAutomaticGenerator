@@ -19,7 +19,9 @@ public class MainGenerator {
         StaticGenerator.copyFileByHutool(inputPath,outputPath);
         //生成动态文件
         String DenamicinputPath = projectPath + File.separator + "ldzx-codegenerator-basic" +  File.separator +"src/main/resources/templates";
+        System.out.println(DenamicinputPath);
         String DenamicoutputPath =outputPath + File.separator+ "MainTemplate.java";
+        System.out.println(DenamicoutputPath);
         DenamicGenerator.doGenerator(DenamicinputPath,DenamicoutputPath,model);
 
 

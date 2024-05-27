@@ -20,7 +20,7 @@ public class MainFileGenerator {
         //生成动态文件
         String DenamicinputPath = projectPath + File.separator + "ldzx-codegenerator-maker" +  File.separator +"src/main/resources/templates";
         String DenamicoutputPath =outputPath + File.separator+ "MainTemplate.java";
-        DenamicFileGenerator.doGenerator(DenamicinputPath,DenamicoutputPath,model);
+        DynamicFileGenerator.doGenerator(DenamicinputPath,DenamicoutputPath,model);
 
 
     }

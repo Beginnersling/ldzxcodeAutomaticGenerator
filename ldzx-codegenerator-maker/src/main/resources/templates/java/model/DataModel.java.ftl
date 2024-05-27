@@ -9,24 +9,7 @@ import lombok.Data;
 public class DataModel {
 <#list modelConfig.models as modelInfo>
     <#if modelInfo.description??>
-
     </#if>
-
+    private ${modelInfo.type} ${modelInfo.fieldName}<#if modelInfo.defaultValue??> = ${modelInfo.defaultValue?c}</#if>
 </#list>
-/*
-* 作者
-* */
-    private String author;
-/*
-* 是否循环
-* */
-    private boolean loop;
-
-/*
-* 输出信息
-* */
-    private String outputTest ="sum=";
-
-
-
 }
