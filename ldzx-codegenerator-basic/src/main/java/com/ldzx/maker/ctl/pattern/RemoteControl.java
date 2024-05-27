@@ -1,0 +1,13 @@
+package com.ldzx.maker.ctl.pattern;
+
+public class RemoteControl {
+    private Command command;
+    public void setCommand(Command command){
+        this.command = command;
+    }
+    public void pressButton(){
+       command.excute();
+    }
+
+
+}
