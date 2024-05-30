@@ -25,8 +25,8 @@ String outputPath;
 <#list fileConfig.files as fileInfo>
 
     <#if fileInfo.type == "static">
-        inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
-        outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getAbsolutePath();
+        inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getParentFile().getAbsolutePath();
+        outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getParentFile().getAbsolutePath();
         StaticGenerator.copyFilesByHutool(inputPath, outputPath);
     <#else >
         inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();

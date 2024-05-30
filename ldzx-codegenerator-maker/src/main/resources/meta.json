@@ -6,8 +6,9 @@
   "author": "ldzx",
   "createTime": "2023-11-22",
   "fileConfig": {
-    "inputRootPath": "D:/AWorkspace/Code//Project1/ldzx-CodeGenerator/ldzx-generator-demo-projects/acm-template-pro",
+    "inputRootPath": ".source/acm-template-pro",
     "outputRootPath": "generated",
+    "sourceRootPath": "D:/AWorkspace/Code/Project1/ldzx-CodeGenerator/ldzx-generator-demo-projects/acm-template-pro",
     "type": "dir",
     "files": [
       {
@@ -51,7 +52,7 @@
         "type": "String",
         "description": "输出信息",
         "defaultValue": "sum = ",
-        "abbr": "o"
+         "abbr": "o"
       }
     ]
   }

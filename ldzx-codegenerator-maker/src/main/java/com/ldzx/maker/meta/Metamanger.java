@@ -23,7 +23,7 @@ public class Metamanger {
         String metaJson = ResourceUtil.readUtf8Str("meta.json");
         Meta newMate = JSONUtil.toBean(metaJson, Meta.class);
         Meta.FileConfigDTO fileConfigDTO = newMate.getFileConfig();
-        //todo 校验和处理默认值
+        MetaValidator.doValidatorAndFill(newMate);
         return newMate;
 
     }
