@@ -25,16 +25,16 @@ public class MetaValidator {
 
     private static void vaildAndModelConfig(Meta meta) {
         //modelConfig校验
-        Meta.ModelConfigDTO modelConfig = meta.getModelConfig();
+        Meta.ModelConfig modelConfig = meta.getModelConfig();
 
         if(modelConfig != null){
             return;
         }
-            List<Meta.ModelConfigDTO.modelInfo> modelInfoList = meta.getModelConfig().getModels();
+            List<Meta.ModelConfig.ModelInfo> modelInfoList = meta.getModelConfig().getModels();
             if(CollectionUtil.isNotEmpty(modelInfoList)){
                 return;
             }
-                for(Meta.ModelConfigDTO.modelInfo modelinfo : modelInfoList){
+                for(Meta.ModelConfig.ModelInfo modelinfo : modelInfoList){
                     //为group,不校验
                     String groupkey = modelinfo.getGroupKey();
                     if (StrUtil.isNotEmpty(groupkey)){
@@ -56,7 +56,7 @@ public class MetaValidator {
 
     private static void vaildAndFillFileConfig(Meta meta) {
         //FileConfig校验
-        Meta.FileConfigDTO fileConfig = meta.getFileConfig();
+        Meta.FileConfig fileConfig = meta.getFileConfig();
         if(fileConfig != null){
 
             //sourceRootPath
@@ -84,11 +84,11 @@ public class MetaValidator {
 
         }
         // fileInfo 默认值
-        List<Meta.FileConfigDTO.FilesInfo> fileInfoList = fileConfig.getFiles();
+        List<Meta.FileConfig.FileInfo> fileInfoList = fileConfig.getFiles();
         if (!CollectionUtil.isNotEmpty(fileInfoList)) {
             return;
         }
-        for (Meta.FileConfigDTO.FilesInfo fileInfo : fileInfoList) {
+        for (Meta.FileConfig.FileInfo fileInfo : fileInfoList) {
             // type：默认 inputPath 有文件后缀（如 .java）为 file，否则为 dir
             String type = fileInfo.getType();
             if (FileTypeEnum.GROUP.getValue().equals(type)) {
