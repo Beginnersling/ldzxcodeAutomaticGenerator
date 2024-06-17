@@ -16,7 +16,6 @@ import java.io.IOException;
 public abstract class GenerateTemplate {
     public void doGenerate() throws TemplateException, IOException, InterruptedException {
         Meta meta = Metamanger.getMetaObject();
-
         //0.输出根路径
         String projectPath = System.getProperty("user.dir") + File.separator + "ldzx-codegenerator-maker";
 

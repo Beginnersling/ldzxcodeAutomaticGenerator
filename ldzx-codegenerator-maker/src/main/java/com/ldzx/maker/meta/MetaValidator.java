@@ -5,7 +5,6 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import com.ldzx.maker.meta.emus.FileGenerateTypeEnum;
-import com.ldzx.maker.meta.emus.FileModelTypeEnum;
 import com.ldzx.maker.meta.emus.FileTypeEnum;
 
 import java.io.File;
@@ -35,16 +34,21 @@ public class MetaValidator {
             if(CollectionUtil.isNotEmpty(modelInfoList)){
                 return;
             }
-                for(Meta.ModelConfigDTO.modelInfo modelConfigDTO : modelInfoList){
-                    //输出路径默认值
-                    String fieldName = modelConfigDTO.getFieldName();
-                    if(StrUtil.isBlank(fieldName)){
-                        throw new MetaException("未填写 fieldName");
+                for(Meta.ModelConfigDTO.modelInfo modelinfo : modelInfoList){
+                    //为group,不校验
+                    String groupkey = modelinfo.getGroupKey();
+                    if (StrUtil.isNotEmpty(groupkey)){
+                        continue;
                     }
-                    String type = modelConfigDTO.getType();
-                    if(StrUtil.isEmpty(type)){
-                        modelConfigDTO.setType(FileModelTypeEnum.STRING.getValue());
-                    }
+//                    //输出路径默认值
+//                    String fieldName = modelConfigDTO.getFieldName();
+//                    if(StrUtil.isBlank(fieldName)){
+//                        throw new MetaException("未填写 fieldName");
+//                    }
+//                    String type = modelConfigDTO.getType();
+//                    if(StrUtil.isEmpty(type)){
+//                        modelConfigDTO.setType(FileModelTypeEnum.STRING.getValue());
+//                    }
                 }
 
 
@@ -85,6 +89,17 @@ public class MetaValidator {
             return;
         }
         for (Meta.FileConfigDTO.FilesInfo fileInfo : fileInfoList) {
+            // type：默认 inputPath 有文件后缀（如 .java）为 file，否则为 dir
+            String type = fileInfo.getType();
+            if (FileTypeEnum.GROUP.getValue().equals(type)) {
+                continue;
+//                // 无文件后缀
+//                if (StrUtil.isBlank(FileUtil.getSuffix(inputPath))) {
+//                    fileInfo.setType(FileTypeEnum.DIR.getValue());
+//                } else {
+//                    fileInfo.setType(FileTypeEnum.File.getValue());
+//                }
+            }
             // inputPath: 必填
             String inputPath = fileInfo.getInputPath();
             if (StrUtil.isBlank(inputPath)) {
@@ -96,16 +111,7 @@ public class MetaValidator {
             if (StrUtil.isEmpty(outputPath)) {
                 fileInfo.setOutputPath(inputPath);
             }
-            // type：默认 inputPath 有文件后缀（如 .java）为 file，否则为 dir
-            String type = fileInfo.getType();
-            if (StrUtil.isBlank(type)) {
-                // 无文件后缀
-                if (StrUtil.isBlank(FileUtil.getSuffix(inputPath))) {
-                    fileInfo.setType(FileTypeEnum.DIR.getValue());
-                } else {
-                    fileInfo.setType(FileTypeEnum.File.getValue());
-                }
-            }
+
             // generateType：如果文件结尾不为 Ftl，generateType 默认为 static，否则为 dynamic
             String generateType = fileInfo.getGenerateType();
             if (StrUtil.isBlank(generateType)) {
@@ -118,7 +124,6 @@ public class MetaValidator {
             }
         }
     }
-
     private static void validAndFillMetaRoot(Meta meta) {
         //基础信息校验
         String name = meta.getName();

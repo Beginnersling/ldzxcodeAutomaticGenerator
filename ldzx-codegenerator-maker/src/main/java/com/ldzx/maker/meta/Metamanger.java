@@ -22,7 +22,7 @@ public class Metamanger {
     private static Meta initMate(){
         String metaJson = ResourceUtil.readUtf8Str("meta.json");
         Meta newMate = JSONUtil.toBean(metaJson, Meta.class);
-        Meta.FileConfigDTO fileConfigDTO = newMate.getFileConfig();
+        Meta.FileConfigDTO fileConfig = newMate.getFileConfig();
         MetaValidator.doValidatorAndFill(newMate);
         return newMate;
 
