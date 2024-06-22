@@ -14,6 +14,7 @@ public class TemplateMakerFileConfig {
     @NoArgsConstructor
     public static class FileInfoConfig{
         private String path;
+        private String condition;
         public List<FileFilterConfig> fileConfigList;
     }
     @Data

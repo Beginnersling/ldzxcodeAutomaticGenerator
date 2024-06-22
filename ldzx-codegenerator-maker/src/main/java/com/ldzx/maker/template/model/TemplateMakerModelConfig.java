@@ -14,7 +14,7 @@ public class TemplateMakerModelConfig {
     @Data
     @NoArgsConstructor
     public static class ModelInfoConfig{
-        private String fileName;
+        private String fieldName;
         private String type;
         private String description;
         private Object defaultValue;
@@ -25,6 +25,8 @@ public class TemplateMakerModelConfig {
         private String condition;
         private String groupKey;
         private String groupName;
+        private String type;
+        private String description;
 
     }
 }
