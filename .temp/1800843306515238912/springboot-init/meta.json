@@ -1,0 +1,31 @@
+{
+    "name": "acm-template-generator",
+    "description": "ACM 示例模板生成器",
+    "fileConfig": {
+        "sourceRootPath": "D:\\AWorkspace\\Code\\Project1\\ldzx-CodeGenerator\\.temp\\1800843306515238912\\springboot-init",
+        "files": [
+            {
+                "type": "group",
+                "condition": "outputText",
+                "groupName": "测试分组",
+                "groupKey": "test",
+                "files": [
+                ]
+            }
+        ]
+    },
+    "modelConfig": {
+        "models": [
+            {
+                "groupKey": "mysql",
+                "groupName": "数据库配置",
+                "models": [
+                    {
+                        "type": "String",
+                        "defaultValue": "root"
+                    }
+                ]
+            }
+        ]
+    }
+}
